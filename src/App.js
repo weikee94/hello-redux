@@ -8,10 +8,10 @@ class App extends Component {
       <div className="container">
         <h1 className="jumbotron-heading text-center">{this.props.value}</h1>
         <p className="text-center">
-          <button className="btn btn-primary mr-2">
+          <button onClick={this.props.onIncrement} className="btn btn-primary mr-2">
             increase
           </button>
-          <button className="btn btn-primary my-2">
+          <button onClick={this.props.onDecrement} className="btn btn-primary my-2">
             decrease
           </button>
         </p>

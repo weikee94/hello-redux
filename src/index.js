@@ -8,24 +8,25 @@ import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(reducer);
 
-
 // 监听事件发生
-store.subscribe(() => console.log("State updated!", store.getState()));
-
-store.dispatch({
-    type: 'INCREMENT'
-})
-
-store.dispatch({
-    type: 'INCREMENT'
-})
+// store.subscribe(() => console.log("State updated!", store.getState()));
 
 const render = () => {
-    ReactDOM.render(<App value={store.getState()} />, document.getElementById('root'));
+    ReactDOM.render(
+        <App 
+            onIncrement={() => store.dispatch({
+                type: 'INCREMENT'
+            })}
+            onDecrement={() => store.dispatch({
+                type: 'DECREMENT'
+            })}
+            value={store.getState()} />, 
+            document.getElementById('root')
+    );
 }
 
 render();
 
-
+store.subscribe(render);
 
 registerServiceWorker();
